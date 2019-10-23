@@ -2,17 +2,10 @@ const sel = (v, el = document) => el.querySelector(v);
 const selAll = (v, el = document) => el.querySelectorAll(v);
 const _sel = el => typeof el === 'string' ? sel(el) : el;
 const _selAll = el => typeof el === 'string' ? selAll(el) : Array.isArray(el) ? el : [el];
-const addEvent = (a, el, f) => _selAll(el).forEach(v => v.addEventListener(a, f));
+const addEvent= (s, e, f) => _selAll(s).forEach( (v) => v.addEventListener(e, f));
 const removeEvent = (a, el, f) => _selAll(el).forEach(v => v.removeEventListener(a, f));
 const hasClass = (el, cls) => el.className.search(new RegExp(cls)) !== -1;
 const assignStyle = (props) => Object.entries(props).reduce((p, v) => p += `${v[0]}:${v[1]};`,'');
-/*
-const addEvent= (s, e, f) => {
-    [...selAll(s)].forEach( (el) => {
-        el.addEventListener(e, f);
-    });
-};
-*/
 
 const draggable = (div = '.draggable', curosr = '.header') => {
     const element = document.querySelector(div);
